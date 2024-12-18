@@ -1,16 +1,21 @@
 package nombres;
 
 public class ArabicRomanNumerals {
-    public String convert(int nombre) {
-        StringBuilder resultat = new StringBuilder();
+    
+        public String convert(int nombre) {
+            StringBuilder resultat = new StringBuilder();
 
-        for (int i = 0; i < nombre / 10; i++) {
-            resultat.append("X");
-        }
-        for (int i = 0; i < nombre % 10; i++) {
-            resultat.append("I");
-        }
+            int reste = nombre;
 
-        return resultat.toString();
-    }  }
+            while (reste >= 10) {
+                resultat.append("X");
+                reste -= 10;
+            }
+            while (reste >= 1) {
+                resultat.append("I");
+                reste -= 1;
+            }
+
+            return resultat.toString();
+        }  }
 
