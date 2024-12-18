@@ -1,8 +1,19 @@
 package nombres;
 
 public class ArabicRomanNumerals {
-    
-        public String convert(int nombre) {
+
+    static enum RomanLiteral {
+        I(1),
+        X(10),
+        ;
+
+        int value;
+
+        private RomanLiteral(int value) {
+            this.value = value;
+        }
+    }
+    public String convert(int nombre) {
             StringBuilder resultat = new StringBuilder();
 
             int reste = nombre;
