@@ -3,6 +3,7 @@ package nombres;
 public class ArabicRomanNumerals {
 
     public String convert(int i){
-        return "I" ;
+        if(i>1) {return "II" ;}
+        return "I";
     }
 }
