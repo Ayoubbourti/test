@@ -6,12 +6,15 @@ public class ArabicRomanNumerals {
         StringBuilder resultat = new StringBuilder();
 
         if (nombre >= 10) {
-            return "X";
+            for (int i = 0; i < nombre/10; i++) {
+                resultat.append("X");
+            }
         } else {
             for (int i = 0; i < nombre; i++) {
                 resultat.append("I");
             }
         }
+
         return resultat.toString();
-    }  }
+    }   }
 
