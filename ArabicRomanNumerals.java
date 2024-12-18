@@ -1,5 +1,9 @@
 package nombres;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class ArabicRomanNumerals {
 
     static enum RomanLiteral {
@@ -14,19 +18,20 @@ public class ArabicRomanNumerals {
         }
     }
     public String convert(int nombre) {
-            StringBuilder resultat = new StringBuilder();
+        StringBuilder resultat = new StringBuilder();
 
-            int reste = nombre;
+        int reste = nombre;
 
-            while (reste >= 10) {
-                resultat.append("X");
-                reste -= 10;
+        List<RomanLiteral> literals = Arrays.asList(RomanLiteral.values());
+        Collections.reverse(literals);
+
+        for (RomanLiteral literal : literals) {
+            while (reste > literal.value) {
+                resultat.append(literal.name());
+                reste -= literal.value;
             }
-            while (reste >= 1) {
-                resultat.append("I");
-                reste -= 1;
-            }
+        }
 
-            return resultat.toString();
-        }  }
+        return resultat.toString();
+    }  }
 
