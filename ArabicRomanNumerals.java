@@ -3,8 +3,10 @@ package nombres;
 public class ArabicRomanNumerals {
 
     public String convert(int i){
-        if(i>2){ return "III";}
-        else if(i>1) {return "II" ;}
-        return "I";
-    }
-}
+        StringBuilder resultat = new StringBuilder();
+
+        for(int j=0;j<i;j++){
+            resultat.append("I");
+        }
+        return resultat.toString();
+    } }
