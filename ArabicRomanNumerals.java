@@ -6,11 +6,12 @@ import java.util.List;
 
 public class ArabicRomanNumerals {
 
+
     static enum RomanLiteral {
-        I(1),
-        v(5),
+
         X(10),
-        ;
+        V(5),
+        I(1);
 
         int value;
 
@@ -18,21 +19,26 @@ public class ArabicRomanNumerals {
             this.value = value;
         }
     }
+
+
+    public static List<RomanLiteral> literalsDecrementOrder() {
+        List<RomanLiteral> literals = Arrays.asList(RomanLiteral.values());
+        return literals; // L'ordre est déjà décroissant
+    }
+
+    
     public String convert(int nombre) {
         StringBuilder resultat = new StringBuilder();
 
         int reste = nombre;
 
-        List<RomanLiteral> literals = Arrays.asList(RomanLiteral.values());
-        Collections.reverse(literals);
-
-        for (RomanLiteral literal : literals) {
-            while (reste > literal.value) {
+        for (RomanLiteral literal : literalsDecrementOrder()) {
+            while (reste >= literal.value) {
                 resultat.append(literal.name());
                 reste -= literal.value;
             }
         }
 
         return resultat.toString();
-    }  }
-
+    }
+}
