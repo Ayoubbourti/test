@@ -11,6 +11,7 @@ public class ArabicRomanNumerals {
 
         X(10),
         V(5),
+        IV(4),
         I(1);
 
         int value;
@@ -26,7 +27,7 @@ public class ArabicRomanNumerals {
         return literals; // L'ordre est déjà décroissant
     }
 
-    
+
     public String convert(int nombre) {
         StringBuilder resultat = new StringBuilder();
 
