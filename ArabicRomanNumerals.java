@@ -6,7 +6,8 @@ public class ArabicRomanNumerals {
 
 
     static enum RomanLiteral {
-
+       
+        XL(40),
         X(10),
         IX(9),
         V(5),
