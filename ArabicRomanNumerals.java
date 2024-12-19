@@ -1,7 +1,5 @@
 package nombres;
-
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class ArabicRomanNumerals {
@@ -20,27 +18,45 @@ public class ArabicRomanNumerals {
         private RomanLiteral(int value) {
             this.value = value;
         }
+
+        public static List<RomanLiteral> literalsDecrementOrder() {
+            return Arrays.asList(RomanLiteral.values());
+        }
     }
 
 
-    public static List<RomanLiteral> literalsDecrementOrder() {
-        List<RomanLiteral> literals = Arrays.asList(RomanLiteral.values());
-        return literals; // L'ordre est déjà décroissant
-    }
-
-
-    public String convert(int nombre) {
+    static class ResultatBuilder {
+        int reste;
         StringBuilder resultat = new StringBuilder();
 
-        int reste = nombre;
+        public ResultatBuilder(int reste) {
+            this.reste = reste;
+        }
 
-        for (RomanLiteral literal : literalsDecrementOrder()) {
+        public void compute(RomanLiteral literal) {
             while (reste >= literal.value) {
                 resultat.append(literal.name());
                 reste -= literal.value;
             }
         }
 
-        return resultat.toString();
+        public String format() {
+            return resultat.toString();
+        }
+    }
+
+
+
+    public String convert(int i) {
+        if (i < 1 || i > 50) {
+            throw new IllegalArgumentException("Number must be between 1 and 50");
+        }
+
+        ResultatBuilder resultat = new ResultatBuilder(i);
+        for (RomanLiteral literal :
+                RomanLiteral.literalsDecrementOrder()) {
+            resultat.compute(literal);
+        }
+        return resultat.format();
     }
 }
